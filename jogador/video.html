@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="../paginaInicial/images/favicon_io/favicon-32x32.png">
+  <title>Upload de Vídeo</title>
+  <style>
+   body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.upload-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+.back-arrow {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 22px;
+  color: #555;
+  text-decoration: none;
+  background: #eee;
+  padding: 6px 10px;
+  border-radius: 50%;
+  transition: background 0.3s, color 0.3s;
+}
+
+.back-arrow:hover {
+  background: #ddd;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.upload-preview {
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 20px;
+  background-color: #fafafa;
+  color: #666;
+  font-weight: 600;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.upload-preview:hover {
+  border-color: #999;
+  background-color: #f0f0f0;
+  color: #444;
+}
+
+.upload-preview input {
+  display: none;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: none;
+  font-size: 14px;
+  font-family: inherit;
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+textarea:focus {
+  border-color: #999;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #444;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="upload-container">
+    <!-- Setinha dentro da caixa -->
+    <a href="pagina.html" class="back-arrow" title="Voltar">&#8592;</a>
+
+    <h2>Upload de Vídeo</h2>
+    <form onsubmit="enviarVideo(event)">
+      <div class="upload-preview">
+        <label for="videoInput">Clique para selecionar o vídeo</label>
+        <input type="file" id="videoInput" accept="video/*" required>
+      </div>
+      <textarea id="description" placeholder="Descrição" required></textarea>
+      <button type="submit">Postar</button>
+    </form>
+  </div>
+
+  <script>
+    function enviarVideo(event) {
+      event.preventDefault();
+      const videoInput = document.getElementById('videoInput');
+      const description = document.getElementById('description').value;
+
+      if (!videoInput.files.length) {
+        alert("Por favor, selecione um vídeo.");
+        return;
+      }
+
+      const videoFile = videoInput.files[0];
+      const videoURL = URL.createObjectURL(videoFile);
+
+      // Salva no localStorage
+      localStorage.setItem('videoURL', videoURL);
+      localStorage.setItem('videoDescription', description);
+
+      // Redireciona para página de vídeos
+      window.location.href = "MeusVideo.html";
+    }
+  </script>
+</body>
+</html>

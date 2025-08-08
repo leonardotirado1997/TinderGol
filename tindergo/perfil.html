@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil do Jogador</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../paginaInicial/images/favicon_io/favicon-32x32.png">
+  <script src="https://kit.fontawesome.com/f9e19193d6.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    /* Cabeçalho */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .header span {
+      color: #666;
+    }
+
+    /* Card principal */
+    .profile-main {
+      display: flex;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .profile-main img {
+      width: 250px;
+      object-fit: cover;
+    }
+
+    .profile-details {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .rating i {
+      color: gold;
+      margin-right: 2px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .info-item h3 {
+      font-size: 0.9rem;
+      color: #666;
+      margin: 0;
+    }
+
+    .info-item p {
+      font-size: 1rem;
+      margin: 3px 0 0;
+      font-weight: 500;
+    }
+
+    /* Painel lateral */
+    .side-panel {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .side-card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      flex: 1;
+      min-width: 250px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .side-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* Formulário e comentários */
+    #avaliacao-form,
+    #comentarios {
+      background: white;
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      margin-top: 20px;
+    }
+
+    #avaliacao-form label {
+      font-weight: 600;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    #avaliacao-form input,
+    #avaliacao-form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    #avaliacao-form button {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      width: 100%;
+    }
+
+    #avaliacao-form button:hover {
+      background-color: #2563eb;
+    }
+
+    #comentarios h4 {
+      margin-top: 0;
+    }
+
+    .comentario {
+      border-bottom: 1px solid #eee;
+      padding: 8px 0;
+    }
+
+    .comentario:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Cabeçalho -->
+    <div class="header">
+      <h1 id="playerName">Nome do Jogador</h1>
+      <span id="position">-</span>
+    </div>
+
+    <!-- Card principal -->
+    <div class="profile-main">
+      <img id="foto" src="img/jogador.jpg" alt="Foto do jogador">
+      <div class="profile-details">
+        <div class="rating" id="rating"></div>
+        <div class="info-grid">
+          <div class="info-item">
+            <h3>Times</h3>
+            <p id="teams">-</p>
+          </div>
+          <div class="info-item">
+            <h3>Pontuação</h3>
+            <p id="score">-</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Painel lateral -->
+    <div class="side-panel">
+      <div class="side-card">
+        <h4>Atributos</h4>
+        <img id="atributosImg" src="img/atributos_default.png" alt="Radar de atributos">
+      </div>
+      <div class="side-card">
+        <h4>Mapa de calor</h4>
+        <img id="mapaCalor" src="img/mapa_default.png" alt="Mapa de calor">
+      </div>
+    </div>
+
+    <!-- Formulário -->
+    <form id="avaliacao-form">
+      <label for="nota">Sua avaliação (0.0 a 5.0):</label>
+      <input type="number" id="nota" name="nota" min="0" max="5" step="0.1" required />
+      <label for="comentario">Deixe um comentário:</label>
+      <textarea id="comentario" name="comentario" placeholder="Digite seu comentário aqui..."></textarea>
+      <button type="submit">Enviar Avaliação</button>
+    </form>
+
+    <!-- Comentários -->
+    <div id="comentarios">
+      <h4>Comentários</h4>
+      <div id="lista-comentarios"></div>
+    </div>
+  </div>
+
+  <script>
+      const jogadores = {
+  Josue: {
+    rating: 4.2,
+    foto: "img/Homen1.jpg",
+    position: "Atacante",
+    teams: ["Atlético Maneiro"],
+    score: 82,
+    totalAvaliacoes: 3,
+    comentarios: ["Muito rápido!", "Ótimo finalizador."],
+    mapaCalor: "img/mapacalor/atacante.png",
+    atributos: "img/atributos/atacante.png"
+  },
+  Bruno: {
+    rating: 3.9,
+    foto: "img/Homen2.jpg",
+    position: "Meio-campista",
+    teams: ["Shaktar Dos Lek's"],
+    score: 74,
+    totalAvaliacoes: 2,
+    comentarios: ["Bom passe e visão de jogo."],
+        mapaCalor: "img/mapacalor/meiocampo.png",
+    atributos: "img/atributos/midfild.png"
+  },
+  Davi: {
+    rating: 4.5,
+    foto: "img/homen3.jpg",
+    position: "Zagueiro",
+    teams: ["Paysanduba"],
+    score: 79,
+    totalAvaliacoes: 4,
+    comentarios: ["Defensor sólido.", "Ótimo no jogo aéreo."],
+    mapaCalor: "img/mapacalor/defesa.png",
+     atributos: "img/atributos/defensor.png"
+  },
+  Diego: {
+    rating: 4.7,
+    foto: "img/goleiro.jpg",
+    position: "Goleiro",
+    teams: ["Inter de Limão"],
+    score: 85,
+    totalAvaliacoes: 5,
+    comentarios: ["Salva o time!", "Reação impressionante."],
+    mapaCalor: "img/mapacalor/goleiro.png",
+    atributos: "img/atributos/goleiro.png"
+  },
+  Miguel: {
+    rating: 4.0,
+    foto: "img/homen4.jpg",
+    position: "Atacante",
+    teams: ["Baile de Monique"],
+    score: 77,
+    totalAvaliacoes: 2,
+    comentarios: ["Velocidade incrível.", "Ainda pode melhorar o chute."],
+    mapaCalor: "img/mapacalor/atacante.png",
+    atributos: "img/atributos/atacante.png"
+  },
+  Fernanda: {
+    rating: 4.3,
+    foto: "img/mulher2.jpg",
+    position: "Meio-campista",
+    teams: ["Barcemlona"],
+    score: 78,
+    totalAvaliacoes: 3,
+    comentarios: ["Excelente controle de bola.", "Ótima visão de jogo."],
+    mapaCalor: "img/mapacalor/meiocampo.png",
+    atributos: "img/atributos/midfild.png"
+  },
+  Gabi: {
+    rating: 4.1,
+    foto: "img/mulher1.jpg",
+    position: "Zagueira",
+    teams: ["Marrentos FC"],
+    score: 75,
+    totalAvaliacoes: 2,
+    comentarios: ["Forte na marcação.", "Bom posicionamento."],
+    mapaCalor: "img/mapacalor/defesa.png",
+    atributos: "img/atributos/defensor.png"
+  },
+  Carla: {
+    rating: 4.6,
+    foto: "img/carla.jpg",
+    position: "Zagueira",
+    teams: ["Cartola Fc"],
+    score: 76,
+    totalAvaliacoes: 1,
+    comentarios: [],
+     mapaCalor: "img/mapacalor/defesa.png",
+    atributos: "img/atributos/defensor.png"
+  }
+};
+
+    const params = new URLSearchParams(window.location.search);
+    const nome = params.get("nome");
+
+    const fotoEl = document.getElementById("foto");
+    const positionEl = document.getElementById("position");
+    const playerNameEl = document.getElementById("playerName");
+    const teamsEl = document.getElementById("teams");
+    const scoreEl = document.getElementById("score");
+    const ratingContainer = document.getElementById("rating");
+    const listaComentarios = document.getElementById("lista-comentarios");
+    const form = document.getElementById("avaliacao-form");
+    const notaInput = document.getElementById("nota");
+    const comentarioInput = document.getElementById("comentario");
+    const mapaCalorEl = document.getElementById("mapaCalor");
+    const atributosEl = document.getElementById("atributosImg");
+
+    function atualizarPerfil(jogador) {
+      fotoEl.src = jogador.foto;
+      positionEl.textContent = jogador.position;
+      playerNameEl.textContent = nome;
+      teamsEl.textContent = jogador.teams.join(", ");
+
+      // Atualiza imagens
+      mapaCalorEl.src = jogador.mapaCalor;
+      atributosEl.src = jogador.atributos;
+
+      const rating = jogador.rating;
+      const fullStars = Math.floor(rating);
+      const halfStar = rating % 1 >= 0.5;
+
+      let starsHTML = "";
+      for (let i = 0; i < fullStars; i++) starsHTML += '<i class="fas fa-star"></i>';
+      if (halfStar) starsHTML += '<i class="fas fa-star-half-alt"></i>';
+      while (starsHTML.split("fa-star").length - 1 < 5) starsHTML += '<i class="far fa-star"></i>';
+
+      ratingContainer.innerHTML = starsHTML + ` <span>${rating.toFixed(1)}</span>`;
+
+      jogador.score = Math.round(rating * 20);
+      scoreEl.textContent = jogador.score;
+
+      renderizarComentarios(jogador.comentarios);
+    }
+
+    function renderizarComentarios(comentarios) {
+      if (comentarios.length === 0) {
+        listaComentarios.innerHTML = "<p>Nenhum comentário ainda.</p>";
+        return;
+      }
+      listaComentarios.innerHTML = comentarios.map(c => `
+        <div class="comentario">
+          <strong>Avaliação: ${c.nota.toFixed(1)} / 5</strong>
+          <p>${c.texto}</p>
+        </div>
+      `).join("");
+    }
+
+    if (jogadores[nome]) {
+      const jogador = jogadores[nome];
+      atualizarPerfil(jogador);
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nota = parseFloat(notaInput.value);
+        const texto = comentarioInput.value.trim();
+
+        if (nota < 0 || nota > 5) {
+          alert("A avaliação deve ser entre 0 e 5.");
+          return;
+        }
+
+        jogador.rating = ((jogador.rating * jogador.totalAvaliacoes) + nota) / (jogador.totalAvaliacoes + 1);
+        jogador.totalAvaliacoes++;
+
+        if (texto.length > 0) {
+          jogador.comentarios.push({ nota, texto });
+        }
+
+        atualizarPerfil(jogador);
+        form.reset();
+      });
+    } else {
+      document.querySelector(".profile-main").innerHTML = "<p>Jogador não encontrado.</p>";
+      ratingContainer.innerHTML = "";
+      form.style.display = "none";
+      document.getElementById("comentarios").style.display = "none";
+    }
+  </script>
+</body>
+</html>

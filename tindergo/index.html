@@ -1,0 +1,350 @@
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../paginaInicial/images/favicon_io/favicon-32x32.png">
+  <title>TinderGol</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #1b4d1b, #6fcf97);
+      /* verde escuro -> verde claro */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      color: #1a2e1a;
+      user-select: none;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      padding: 15px 0;
+      background: linear-gradient(135deg, #000000, #020202);
+      /* degrade verde */
+      box-shadow:
+        inset 0 4px 8px rgba(255, 255, 255, 0.4),
+        0 5px 15px rgba(69, 182, 73, 0.6);
+      border-radius: 40px;
+      font-size: 1.4rem;
+      width: 90%;
+      max-width: 450px;
+      margin: 20px auto;
+      user-select: none;
+      transition: box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .navbar:hover {
+      box-shadow:
+        inset 0 6px 12px rgba(255, 255, 255, 0.7),
+        0 8px 25px rgba(69, 182, 73, 0.8);
+    }
+
+    .navbar a {
+      color: #1b4d1b;
+      transition: color 0.3s ease, transform 0.2s ease;
+      padding: 8px 15px;
+      border-radius: 25px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Ícones da navbar em branco com forte contorno preto e brilho branco */
+    .navbar a i {
+      color: #fff !important;
+      text-shadow:
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        0 0 5px rgba(255, 255, 255, 0.8);
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .navbar a:hover {
+      color: #0d2a0d;
+      background: rgba(27, 77, 27, 0.15);
+      transform: scale(1.1);
+      box-shadow: 0 0 8px rgba(13, 42, 13, 0.7);
+    }
+
+    .navbar a:hover i {
+      color: #ccf5ff;
+      transform: scale(1.1);
+      text-shadow:
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        0 0 10px rgba(204, 245, 255, 0.9);
+    }
+
+    .photo-and-actions {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      padding: 20px;
+    }
+
+    .photo {
+      position: relative;
+      width: 320px;
+      height: 440px;
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow:
+        0 15px 25px rgba(0, 64, 0, 0.35),
+        0 8px 10px rgba(0, 64, 0, 0.25);
+      background: #004000;
+      cursor: grab;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .photo:active {
+      cursor: grabbing;
+      box-shadow:
+        0 20px 35px rgba(0, 80, 0, 0.45),
+        0 10px 15px rgba(0, 80, 0, 0.35);
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.9);
+      transition: filter 0.3s ease;
+    }
+
+    .photo:hover video {
+      filter: brightness(1);
+    }
+
+    .arrow-indicator {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      font-size: 28px;
+      color: #a6f0a6;
+      animation: bounce 1.2s infinite;
+      text-shadow: 0 0 8px rgba(0, 50, 0, 0.6);
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(8px);
+      }
+    }
+
+    .photo-text {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 18px 25px;
+      background: linear-gradient(to top, rgba(0, 40, 0, 0.9), transparent);
+      color: #cce8cc;
+      user-select: text;
+      border-radius: 0 0 25px 25px;
+    }
+
+    .photo-name-and-age {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 26px;
+      text-shadow: 0 0 8px rgba(0, 50, 0, 0.9);
+    }
+
+    .photo-name-and-age #age {
+      font-weight: 400;
+      font-size: 20px;
+      color: #d4f1a3;
+    }
+
+    .photo-bio {
+      margin-top: 8px;
+      font-size: 15px;
+      color: #e0f0d8;
+      text-shadow: 0 0 5px rgba(0, 40, 0, 0.7);
+      font-weight: 400;
+      line-height: 1.3;
+      max-height: 56px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Ações (botões) */
+    .actions {
+      display: flex;
+      gap: 45px;
+      margin-top: 5px;
+    }
+
+    .action {
+      background: #e0f0d8;
+      border: none;
+      padding: 20px;
+      border-radius: 50%;
+      box-shadow:
+        0 10px 20px rgba(0, 80, 0, 0.15),
+        inset 0 2px 0 rgba(255, 255, 255, 0.9);
+      font-size: 28px;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 49px;
+      height: 49px;
+    }
+
+    /* Ajuste para ícones ficarem do mesmo tamanho */
+    .action i {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .action:active {
+      transform: scale(0.9);
+      box-shadow:
+        0 5px 10px rgba(0, 80, 0, 0.1),
+        inset 0 2px 5px rgba(255, 255, 255, 0.8);
+    }
+
+    .action.animate {
+      animation: pulse 0.3s ease forwards;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.5);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Ícones das ações */
+    .fa-times {
+      color: #f30606;
+      text-shadow: 0 0 6px #e03e3e;
+    }
+
+    .fa-heart {
+      color: #1e90ff;
+      /* azul dodger blue */
+      text-shadow: 0 0 6px #1e90ff;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="../paginaInicial/index.html"><i class="fas fa-home"></i></a>
+    <a href="../dashboard/login.html"><i class="fas fa-fire"></i></a>
+    <a href="mensagens.html"><i class="fas fa-comments"></i></a>
+    <a href="usuario.html"><i class="fas fa-user"></i></a>
+
+  </nav>
+
+  <div class="photo-and-actions">
+    <div class="photo">
+      <video id="video" autoplay loop muted></video>
+      <div class="arrow-indicator">➡</div>
+      <div class="photo-text">
+        <div class="photo-name-and-age">
+          <h2 id="name">Nome</h2>
+          <h2 id="age">Idade</h2>
+        </div>
+        <div class="photo-bio" id="bio">Bio aqui...</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="action" id="btn-no">
+        <i class="fas fa-times"></i>
+      </button>
+      <button class="action" id="btn-yes">
+        <i class="fas fa-heart"></i>
+      </button>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/f9e19193d6.js" crossorigin="anonymous"></script>
+  <script>
+    // Lista das 7 pessoas com vídeos
+    const profiles = [
+      { name: "Lucas", age: 17, bio: "Atacante veloz e habilidoso.", video: "videos/video1.mp4" },
+      { name: "Gabriel", age: 22, bio: "Defensor forte e inteligente.", video: "videos/video2.mp4" },
+      { name: "Pedro", age: 19, bio: "Goleiro com reflexos incríveis.", video: "videos/video3.mp4" },
+      { name: "Rafael", age: 20, bio: "Meio-campista com ótimo passe.", video: "videos/video4.mp4" },
+      { name: "Thiago", age: 16, bio: "Jovem promessa da lateral direita.", video: "videos/video5.mp4" },
+      { name: "Arlindo", age: 54, bio: "Volante técnico e incansável.", video: "videos/video6.mp4" },
+      { name: "Bruno", age: 25, bio: "Atacante de muita finalização.", video: "videos/video7.mp4" }
+    ];
+
+
+    let currentIndex = 0;
+
+    function loadProfile(index) {
+      document.getElementById("name").textContent = profiles[index].name;
+      document.getElementById("age").textContent = profiles[index].age;
+      document.getElementById("bio").textContent = profiles[index].bio;
+      document.getElementById("video").src = profiles[index].video;
+    }
+
+    function animateAndNext(button) {
+      button.classList.add("animate");
+      setTimeout(() => {
+        button.classList.remove("animate");
+        nextProfile();
+      }, 200);
+    }
+
+    document.getElementById("btn-no").addEventListener("click", () => {
+      animateAndNext(document.getElementById("btn-no"));
+    });
+
+    document.getElementById("btn-yes").addEventListener("click", () => {
+      animateAndNext(document.getElementById("btn-yes"));
+    });
+
+    function nextProfile() {
+      currentIndex++;
+      if (currentIndex >= profiles.length) {
+        alert("Acabaram os perfis!");
+        currentIndex = 0;
+      }
+      loadProfile(currentIndex);
+    }
+
+    // Carrega o primeiro perfil
+    loadProfile(currentIndex);
+  </script>
+</body>
+
+</html>

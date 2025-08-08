@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard - TinderGol</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+      <link rel="icon" type="image/png" sizes="32x32" href="../paginaInicial/images/favicon_io/favicon-32x32.png">
+    <!-- https://fonts.google.com/specimen/Open+Sans -->
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="css/fullcalendar.min.css">
+    <!-- https://fullcalendar.io/ -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="css/tooplate.css">
+</head>
+
+<body id="reportsPage">
+    <div class="" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+                        <a class="navbar-brand" href="#">
+                            <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
+                            <h1 class="tm-site-title mb-0">TinderGol</h1>
+                        </a>
+                        <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mx-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#">Início
+                                        <span class="sr-only">(Atual)</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Relatórios
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Diário</a>
+                                        <a class="dropdown-item" href="#">Mensal</a>
+                                        <a class="dropdown-item" href="#">Anual</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="products.html">Jogadores</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="accounts.html">Perfil</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Configurações
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Perfil</a>
+                                        <a class="dropdown-item" href="#">Times</a>
+                                        <a class="dropdown-item" href="#">Customizar</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex" href="login.html">
+                                        <i class="far fa-user mr-2 tm-logout-icon"></i>
+                                        <span>Sair</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- row -->
+            <div class="row tm-content-row tm-mt-big">
+                <div class="tm-col tm-col-big">
+                    <div class="bg-white tm-block h-100">
+                        <h2 class="tm-block-title">Últimos jogos</h2>
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+                <div class="tm-col tm-col-big">
+                    <div class="bg-white tm-block h-100">
+                        <h2 class="tm-block-title">Desempenho</h2>
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+                <div class="tm-col tm-col-small">
+                    <div class="bg-white tm-block h-100">
+                        <canvas id="pieChart" class="chartjs-render-monitor"></canvas>
+                    </div>
+                </div>
+                <div class="tm-col tm-col-big">
+                    <div class="bg-white tm-block h-100">
+                        <div class="row">
+                            <div class="col-8">
+                                <h2 class="tm-block-title d-inline-block">Melhores jogadores 2025</h2>
+
+                            </div>
+                            <div class="col-4 text-right">
+                                <a href="products.html" class="tm-link-black">Visualizar todos</a>
+                            </div>
+                        </div>
+                        <ol class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
+                            <li class="tm-list-group-item">
+                                Neymar Junior
+                            </li>
+                            <li class="tm-list-group-item">
+                                Bruno Henrique
+                            </li>
+                            <li class="tm-list-group-item">
+                                Gabriel Barbosa
+                            </li>
+                            <li class="tm-list-group-item">
+                                Arrascaeta
+                            </li>
+                            <li class="tm-list-group-item">
+                                Everton Ribeiro
+                            </li>
+                            <li class="tm-list-group-item">
+                                Filipe Luís
+                            </li>
+                            <li class="tm-list-group-item">
+                                Rodrigo Caio
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="tm-col tm-col-big">
+                    <div class="bg-white tm-block h-100">
+                        <h2 class="tm-block-title">Calendário</h2>
+                        <div id="calendar"></div>
+                        <div class="row mt-4">
+                            <div class="col-12 text-right">
+                                <a href="#" class="tm-link-black">Horários dos jogos</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tm-col tm-col-small">
+                    <div class="bg-white tm-block h-100">
+                        <h2 class="tm-block-title">Próximos treinos</h2>
+                        <ol class="tm-list-group">
+                            <li class="tm-list-group-item">Controle de bola</li>
+                            <li class="tm-list-group-item">Chutes</li>
+                            <li class="tm-list-group-item">Cabeceio</li>
+                            <li class="tm-list-group-item">Desarmes</li>
+
+                            <li class="tm-list-group-item">Marcação</li>
+                            <li class="tm-list-group-item">Lançamentos</li>
+                            <li class="tm-list-group-item">Fintas</li>
+                            <li class="tm-list-group-item">Drible</li>
+
+                            <li class="tm-list-group-item">Jogadas ensaiadas</li>
+                            <li class="tm-list-group-item">Passe</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <footer class="row tm-mt-small">
+                <div class="col-12 font-weight-light">
+                    <p class="d-inline-block tm-bg-black text-white py-2 px-4">
+                        Direitos Autorais &copy; 2025 TinderGol . Criado por
+                        <a rel="nofollow" href="#" class="text-white tm-footer-link">Pedro e
+                            Reynaldo</a>
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- https://jquery.com/download/ -->
+    <script src="js/moment.min.js"></script>
+    <!-- https://momentjs.com/ -->
+    <script src="js/utils.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <!-- http://www.chartjs.org/docs/latest/ -->
+    <script src="js/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/pt-br.js"></script>
+    <!-- https://fullcalendar.io/ -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- https://getbootstrap.com/ -->
+    <script src="js/tooplate-scripts.js"></script>
+    <script>
+        let ctxLine,
+            ctxBar,
+            ctxPie,
+            optionsLine,
+            optionsBar,
+            optionsPie,
+            configLine,
+            configBar,
+            configPie,
+            lineChart;
+        barChart, pieChart;
+        // DOM is ready
+        $(function () {
+            updateChartOptions();
+            drawLineChart(); // Line Chart
+            drawBarChart(); // Bar Chart
+            drawPieChart(); // Pie Chart
+            drawCalendar(); // Calendar
+
+            $(window).resize(function () {
+                updateChartOptions();
+                updateLineChart();
+                updateBarChart();
+                reloadPage();
+            });
+        })
+    </script>
+</body>
+
+</html>

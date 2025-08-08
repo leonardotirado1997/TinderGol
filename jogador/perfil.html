@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../paginaInicial/images/favicon_io/favicon-32x32.png">
+  <title>Criação de Usuário</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      width: 350px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .profile-icon {
+      cursor: pointer;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px auto;
+      position: relative;
+    }
+
+    .profile-icon .head {
+      width: 60px;
+      height: 60px;
+      background: gray;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .profile-icon .body {
+      width: 90px;
+      height: 50px;
+      background: gray;
+      border-radius: 50% / 50%;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    form label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    form input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #1E90FF;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1C86EE;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .modal-content button {
+      margin: 10px 5px 0 5px;
+      width: auto;
+      padding: 8px 15px;
+      background-color: #f44336;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .modal-content button.cancel-btn {
+      background-color: gray;
+    }
+
+    .back-arrow {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 22px;
+      color: #1C86EE;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 6px 10px;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .back-arrow:hover {
+      background: rgba(230, 230, 230, 0.9);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <a href="pagina.html" class="back-arrow" title="Voltar">&#8592;</a>
+    <h1>Crie o usuário</h1>
+
+    <div class="profile-icon" onclick="openModal()">
+      <div class="head"></div>
+      <div class="body"></div>
+    </div>
+
+    <form id="userForm">
+      <label for="username">Usuário</label>
+      <input type="text" id="username" name="username" placeholder="Digite seu usuário" required />
+
+      <label for="idade">Idade</label>
+      <input type="number" id="idade" name="idade" placeholder="Digite sua idade" required />
+
+      <label for="cidade">Cidade</label>
+      <input type="text" id="cidade" name="cidade" placeholder="Local" required />
+
+      <button type="button" onclick="salvarUsuario()">Salvar</button>
+    </form>
+  </div>
+
+  <div id="photoModal" class="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <p><strong>Alterar foto do perfil</strong></p>
+      <button class="upload-btn" onclick="alert('Carregar foto')">Carregar foto</button>
+      <button class="remove-btn" onclick="alert('Remover foto atual')">Remover foto atual</button>
+      <button class="cancel-btn" onclick="closeModal()">Cancelar</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById("photoModal").style.display = "flex";
+    }
+
+    function closeModal(event) {
+      if (!event || event.target === document.getElementById("photoModal")) {
+        document.getElementById("photoModal").style.display = "none";
+      }
+    }
+
+    function salvarUsuario() {
+      const form = document.getElementById('userForm');
+      if (form.checkValidity()) {
+        alert("Usuário salvo!");
+        window.location.href = "pagina.html"; // altere o caminho conforme necessário
+      } else {
+        form.reportValidity();
+      }
+    }
+  </script>
+
+</body>
+
+</html>
