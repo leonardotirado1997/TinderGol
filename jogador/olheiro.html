@@ -1,238 +1,241 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Perfil do Olheiro</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../paginaInicial/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon_io/favicon-32x32.png">
   <script src="https://kit.fontawesome.com/f9e19193d6.js" crossorigin="anonymous"></script>
   <style>
     /* Reset básico */
-* {
-  box-sizing: border-box;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  background: #f5f7fa; /* fundo claro e neutro */
-  color: #333;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px 20px;
-}
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+      /* fundo claro e neutro */
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+    }
 
-.profile-card img {
-  width: 100%;
-  height: 480px; /* Dobrou a altura da imagem */
-  object-fit: cover;
-  object-position: top; /* Garante que a parte de cima da imagem apareça */
-  border-radius: 14px;
-  margin-bottom: 18px;
-  border: 3px solid #ff5f6d;
-  box-shadow: 0 0 15px #ff5f6d88;
-}
-
-
-.profile-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.profile-card img {
-  width: 100%;
-  border-radius: 14px;
-  object-fit: cover;
-  margin-bottom: 18px;
-  border: 3px solid #ff5f6d;
-  box-shadow: 0 0 15px #ff5f6d88;
-}
+    .profile-card img {
+      width: 100%;
+      height: 480px;
+      /* Dobrou a altura da imagem */
+      object-fit: cover;
+      object-position: top;
+      /* Garante que a parte de cima da imagem apareça */
+      border-radius: 14px;
+      margin-bottom: 18px;
+      border: 3px solid #ff5f6d;
+      box-shadow: 0 0 15px #ff5f6d88;
+    }
 
 
-@media (min-width: 768px) {
-  .profile-card img {
-    height: 480px;
-  }
-}
+    .profile-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .profile-card img {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      margin-bottom: 18px;
+      border: 3px solid #ff5f6d;
+      box-shadow: 0 0 15px #ff5f6d88;
+    }
 
 
-.profile-info h3 {
-  margin: 12px 0 6px;
-  font-weight: 700;
-  color: #ff5f6d;
-  letter-spacing: 1px;
-  font-size: 1.4rem;
-}
+    @media (min-width: 768px) {
+      .profile-card img {
+        height: 480px;
+      }
+    }
 
-.profile-info p {
-  margin: 0 0 12px;
-  color: #555;
-  font-size: 1rem;
-  line-height: 1.5;
-}
 
-.highlight {
-  background-color: #ff5f6d;
-  color: white;
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  display: inline-block;
-  margin-bottom: 12px;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-}
+    .profile-info h3 {
+      margin: 12px 0 6px;
+      font-weight: 700;
+      color: #ff5f6d;
+      letter-spacing: 1px;
+      font-size: 1.4rem;
+    }
 
-.rating {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  color: #ff5f6d;
-  margin-bottom: 20px;
-  user-select: none;
-}
+    .profile-info p {
+      margin: 0 0 12px;
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
 
-.rating span {
-  font-size: 1.1rem;
-  color: #555;
-  margin-left: 8px;
-  font-weight: 600;
-}
+    .highlight {
+      background-color: #ff5f6d;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-bottom: 12px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+    }
 
-nav.navbar {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  width: 100%;
-  max-width: 400px;
-  margin-top: auto;
-}
+    .rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: #ff5f6d;
+      margin-bottom: 20px;
+      user-select: none;
+    }
 
-nav.navbar a {
-  color: #888;
-  font-size: 1.8rem;
-  transition: color 0.3s ease;
-}
+    .rating span {
+      font-size: 1.1rem;
+      color: #555;
+      margin-left: 8px;
+      font-weight: 600;
+    }
 
-nav.navbar a:hover,
-nav.navbar a:focus {
-  color: #ff5f6d;
-  outline: none;
-}
+    nav.navbar {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      width: 100%;
+      max-width: 400px;
+      margin-top: auto;
+    }
 
-#avaliacao-form {
-  background: #fff;
-  padding: 20px 25px;
-  border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-  max-width: 380px;
-  width: 100%;
-  margin-bottom: 30px;
-  color: #333;
-}
+    nav.navbar a {
+      color: #888;
+      font-size: 1.8rem;
+      transition: color 0.3s ease;
+    }
 
-#avaliacao-form label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 700;
-  letter-spacing: 0.6px;
-  font-size: 1rem;
-  color: #444;
-}
+    nav.navbar a:hover,
+    nav.navbar a:focus {
+      color: #ff5f6d;
+      outline: none;
+    }
 
-#avaliacao-form input[type="number"],
-#avaliacao-form textarea {
-  width: 100%;
-  padding: 10px 14px;
-  margin-bottom: 18px;
-  border-radius: 12px;
-  border: 1.5px solid #ccc;
-  background-color: #fafafa;
-  color: #333;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-  resize: vertical;
-  min-height: 70px;
-  font-family: 'Roboto', sans-serif;
-}
+    #avaliacao-form {
+      background: #fff;
+      padding: 20px 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+      max-width: 380px;
+      width: 100%;
+      margin-bottom: 30px;
+      color: #333;
+    }
 
-#avaliacao-form input[type="number"]:focus,
-#avaliacao-form textarea:focus {
-  outline: none;
-  border-color: #ff5f6d;
-  box-shadow: 0 0 6px #ff5f6daa;
-}
+    #avaliacao-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      font-size: 1rem;
+      color: #444;
+    }
 
-#avaliacao-form button {
-  background-color: #ff5f6d;
-  color: white;
-  border: none;
-  padding: 14px 0;
-  border-radius: 14px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 1.1rem;
-  width: 100%;
-  transition: background-color 0.3s;
-}
+    #avaliacao-form input[type="number"],
+    #avaliacao-form textarea {
+      width: 100%;
+      padding: 10px 14px;
+      margin-bottom: 18px;
+      border-radius: 12px;
+      border: 1.5px solid #ccc;
+      background-color: #fafafa;
+      color: #333;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+      resize: vertical;
+      min-height: 70px;
+      font-family: 'Roboto', sans-serif;
+    }
 
-#avaliacao-form button:hover {
-  background-color: #e04e57;
-}
+    #avaliacao-form input[type="number"]:focus,
+    #avaliacao-form textarea:focus {
+      outline: none;
+      border-color: #ff5f6d;
+      box-shadow: 0 0 6px #ff5f6daa;
+    }
 
-#comentarios {
-  max-width: 380px;
-  width: 100%;
-  background: #fff;
-  padding: 20px 25px;
-  border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-  color: #444;
-  font-size: 0.95rem;
-  text-align: left;
-}
+    #avaliacao-form button {
+      background-color: #ff5f6d;
+      color: white;
+      border: none;
+      padding: 14px 0;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.1rem;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
 
-#comentarios h4 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: #ff5f6d;
-  letter-spacing: 1px;
-}
+    #avaliacao-form button:hover {
+      background-color: #e04e57;
+    }
 
-#comentarios .comentario {
-  border-bottom: 1px solid #eee;
-  padding: 10px 0;
-}
+    #comentarios {
+      max-width: 380px;
+      width: 100%;
+      background: #fff;
+      padding: 20px 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+      color: #444;
+      font-size: 0.95rem;
+      text-align: left;
+    }
 
-#comentarios .comentario:last-child {
-  border-bottom: none;
-}
+    #comentarios h4 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #ff5f6d;
+      letter-spacing: 1px;
+    }
 
-#comentarios .comentario strong {
-  display: block;
-  color: #ff5f6d;
-  margin-bottom: 6px;
-  font-weight: 700;
-}
+    #comentarios .comentario {
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
+    }
 
-#comentarios .comentario p {
-  margin: 0;
-  line-height: 1.4;
-}
+    #comentarios .comentario:last-child {
+      border-bottom: none;
+    }
 
+    #comentarios .comentario strong {
+      display: block;
+      color: #ff5f6d;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    #comentarios .comentario p {
+      margin: 0;
+      line-height: 1.4;
+    }
   </style>
 </head>
 
 <body>
 
   <div class="profile-card">
-    <img id="foto" src="" alt="Foto do olheiro" />
+    <img id="foto" alt="Foto do olheiro" />
     <div class="profile-info">
       <h3 id="nomeOlheiro">Nome</h3>
       <p id="clube">-</p>
@@ -266,96 +269,96 @@ nav.navbar a:focus {
 
   <script>
     const olheiros = {
-  "Mariana": {
-    nome: "Mariana Souza",
-    rating: 4.5,
-    foto: "img/mulher1.jpg",
-    clube: "Shaktar Dos Lek's",
-    regioes: ["Rio de Janeiro", "Espírito Santo"],
-    descobertos: ["Lucas Almeida", "Ana Paula"],
-    totalAvaliacoes: 7,
-    comentarios: [
-      { nota: 5.0, texto: "Ótima capacidade de encontrar talentos locais." },
-      { nota: 4.0, texto: "Sempre muito atenta aos detalhes." }
-    ]
-  },
-  "Lucas": {
-    nome: "Lucas Pereira",
-    rating: 4.3,
-    foto: "img/veio.jpg",
-    clube: "Inter de Limão",
-    regioes: ["São Paulo", "Minas Gerais"],
-    descobertos: ["Pedro Henrique", "Carla Mota"],
-    totalAvaliacoes: 6,
-    comentarios: [
-      { nota: 4.5, texto: "Muito profissional e dedicado." },
-      { nota: 4.0, texto: "Consegue identificar jogadores promissores." }
-    ]
-  },
-  "Camila": {
-    nome: "Camila Ramos",
-    rating: 4.8,
-    foto: "img/mulher.jpg",
-    clube: "Baile de Monique",
-    regioes: ["Bahia", "Pernambuco"],
-    descobertos: ["Fernando Souza", "Lucas Silva"],
-    totalAvaliacoes: 9,
-    comentarios: [
-      { nota: 5.0, texto: "Tem um ótimo olhar para jogadores jovens." },
-      { nota: 4.7, texto: "Recomendo para clubes que buscam talento." }
-    ]
-  },
-  "Rafael": {
-    nome: "Rafael Lima",
-    rating: 4.1,
-    foto: "img/homen4.jpg",
-    clube: "Barcemlona",
-    regioes: ["Paraná", "Santa Catarina"],
-    descobertos: ["Gabriel Costa", "Paulo Henrique"],
-    totalAvaliacoes: 5,
-    comentarios: [
-      { nota: 4.0, texto: "Bom trabalho em campo." }
-    ]
-  },
-  "Gabriel": {
-    nome: "Gabriel Santos",
-    rating: 3.9,
-    foto: "img/homen3.jpg",
-    clube: "Atlético Maneiro",
-    regioes: ["Rio Grande do Sul", "Mato Grosso"],
-    descobertos: ["Marcos Vinicius"],
-    totalAvaliacoes: 4,
-    comentarios: [
-      { nota: 3.8, texto: "Ainda em desenvolvimento, mas promissor." }
-    ]
-  },
-  "Pedro": {
-    nome: "Pedro Alves",
-    rating: 4.6,
-    foto: "img/homen2.jpg",
-    clube: "Paysanduba",
-    regioes: ["Ceará", "Piauí"],
-    descobertos: ["João Paulo", "Felipe Ramos"],
-    totalAvaliacoes: 8,
-    comentarios: [
-      { nota: 4.7, texto: "Ótimo relacionamento com clubes locais." },
-      { nota: 4.5, texto: "Excelente visão para jovens promissores." }
-    ]
-  },
-  "Thiago": {
-    nome: "Thiago Fernandes",
-    rating: 4.4,
-    foto: "img/homen1.jpg",
-    clube: "Fiasco da Grama",
-    regioes: ["Distrito Federal", "Goiás"],
-    descobertos: ["Lucas Fernandes", "Renata Silva"],
-    totalAvaliacoes: 6,
-    comentarios: [
-      { nota: 4.5, texto: "Profissional dedicado e muito confiável." },
-      { nota: 4.3, texto: "Sempre atento às mudanças do mercado." }
-    ]
-  }
-};
+      "Mariana": {
+        nome: "Mariana Souza",
+        rating: 4.5,
+        foto: "img/mulher1.jpg",
+        clube: "Shaktar Dos Lek's",
+        regioes: ["Rio de Janeiro", "Espírito Santo"],
+        descobertos: ["Lucas Almeida", "Ana Paula"],
+        totalAvaliacoes: 7,
+        comentarios: [
+          { nota: 5.0, texto: "Ótima capacidade de encontrar talentos locais." },
+          { nota: 4.0, texto: "Sempre muito atenta aos detalhes." }
+        ]
+      },
+      "Lucas": {
+        nome: "Lucas Pereira",
+        rating: 4.3,
+        foto: "img/veio.jpg",
+        clube: "Inter de Limão",
+        regioes: ["São Paulo", "Minas Gerais"],
+        descobertos: ["Pedro Henrique", "Carla Mota"],
+        totalAvaliacoes: 6,
+        comentarios: [
+          { nota: 4.5, texto: "Muito profissional e dedicado." },
+          { nota: 4.0, texto: "Consegue identificar jogadores promissores." }
+        ]
+      },
+      "Camila": {
+        nome: "Camila Ramos",
+        rating: 4.8,
+        foto: "img/mulher.jpg",
+        clube: "Baile de Monique",
+        regioes: ["Bahia", "Pernambuco"],
+        descobertos: ["Fernando Souza", "Lucas Silva"],
+        totalAvaliacoes: 9,
+        comentarios: [
+          { nota: 5.0, texto: "Tem um ótimo olhar para jogadores jovens." },
+          { nota: 4.7, texto: "Recomendo para clubes que buscam talento." }
+        ]
+      },
+      "Rafael": {
+        nome: "Rafael Lima",
+        rating: 4.1,
+        foto: "img/homen4.jpg",
+        clube: "Barcemlona",
+        regioes: ["Paraná", "Santa Catarina"],
+        descobertos: ["Gabriel Costa", "Paulo Henrique"],
+        totalAvaliacoes: 5,
+        comentarios: [
+          { nota: 4.0, texto: "Bom trabalho em campo." }
+        ]
+      },
+      "Gabriel": {
+        nome: "Gabriel Santos",
+        rating: 3.9,
+        foto: "img/homen3.jpg",
+        clube: "Atlético Maneiro",
+        regioes: ["Rio Grande do Sul", "Mato Grosso"],
+        descobertos: ["Marcos Vinicius"],
+        totalAvaliacoes: 4,
+        comentarios: [
+          { nota: 3.8, texto: "Ainda em desenvolvimento, mas promissor." }
+        ]
+      },
+      "Pedro": {
+        nome: "Pedro Alves",
+        rating: 4.6,
+        foto: "img/homen2.jpg",
+        clube: "Paysanduba",
+        regioes: ["Ceará", "Piauí"],
+        descobertos: ["João Paulo", "Felipe Ramos"],
+        totalAvaliacoes: 8,
+        comentarios: [
+          { nota: 4.7, texto: "Ótimo relacionamento com clubes locais." },
+          { nota: 4.5, texto: "Excelente visão para jovens promissores." }
+        ]
+      },
+      "Thiago": {
+        nome: "Thiago Fernandes",
+        rating: 4.4,
+        foto: "img/homen1.jpg",
+        clube: "Fiasco da Grama",
+        regioes: ["Distrito Federal", "Goiás"],
+        descobertos: ["Lucas Fernandes", "Renata Silva"],
+        totalAvaliacoes: 6,
+        comentarios: [
+          { nota: 4.5, texto: "Profissional dedicado e muito confiável." },
+          { nota: 4.3, texto: "Sempre atento às mudanças do mercado." }
+        ]
+      }
+    };
 
 
     const params = new URLSearchParams(window.location.search);
@@ -439,4 +442,5 @@ nav.navbar a:focus {
     }
   </script>
 </body>
+
 </html>
