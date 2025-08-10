@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Perfil do Jogador</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon_io/favicon-32x32.png">
   <script src="https://kit.fontawesome.com/f9e19193d6.js" crossorigin="anonymous"></script>
   <style>
     body {
@@ -221,96 +221,129 @@
   </div>
 
   <script>
-      const jogadores = {
-  Josue: {
-    rating: 4.2,
-    foto: "img/Homen1.jpg",
-    position: "Atacante",
-    teams: ["Atlético Maneiro"],
-    score: 82,
-    totalAvaliacoes: 3,
-    comentarios: ["Muito rápido!", "Ótimo finalizador."],
-    mapaCalor: "img/mapacalor/atacante.png",
-    atributos: "img/atributos/atacante.png"
-  },
-  Bruno: {
-    rating: 3.9,
-    foto: "img/Homen2.jpg",
-    position: "Meio-campista",
-    teams: ["Shaktar Dos Lek's"],
-    score: 74,
-    totalAvaliacoes: 2,
-    comentarios: ["Bom passe e visão de jogo."],
+    const jogadores = {
+      Josue: {
+        rating: 4.2,
+        foto: "img/Homen1.jpg",
+        position: "Atacante",
+        teams: ["Atlético Maneiro"],
+        score: 82,
+        totalAvaliacoes: 3,
+        comentarios: [
+          { nota: 4.0, texto: "Explosão de velocidade impressionante, mas precisa trabalhar finalização de perna esquerda." },
+          { nota: 4.5, texto: "Bom no 1x1, quebra linhas facilmente." },
+          { nota: 4.0, texto: "Inteligente para se posicionar na última linha da defesa." }
+        ],
+        mapaCalor: "img/mapacalor/atacante.png",
+        atributos: "img/atributos/atacante.png"
+      },
+      Bruno: {
+        rating: 3.9,
+        foto: "img/Homen2.jpg",
+        position: "Meio-campista",
+        teams: ["Shaktar Dos Lek's"],
+        score: 74,
+        totalAvaliacoes: 2,
+        comentarios: [
+          { nota: 3.8, texto: "Boa leitura de jogo, mas precisa acelerar a transição ofensiva." },
+          { nota: 4.0, texto: "Passe vertical de qualidade, raramente erra de curta distância." },
+        ],
         mapaCalor: "img/mapacalor/meiocampo.png",
-    atributos: "img/atributos/midfild.png"
-  },
-  Davi: {
-    rating: 4.5,
-    foto: "img/homen3.jpg",
-    position: "Zagueiro",
-    teams: ["Paysanduba"],
-    score: 79,
-    totalAvaliacoes: 4,
-    comentarios: ["Defensor sólido.", "Ótimo no jogo aéreo."],
-    mapaCalor: "img/mapacalor/defesa.png",
-     atributos: "img/atributos/defensor.png"
-  },
-  Diego: {
-    rating: 4.7,
-    foto: "img/goleiro.jpg",
-    position: "Goleiro",
-    teams: ["Inter de Limão"],
-    score: 85,
-    totalAvaliacoes: 5,
-    comentarios: ["Salva o time!", "Reação impressionante."],
-    mapaCalor: "img/mapacalor/goleiro.png",
-    atributos: "img/atributos/goleiro.png"
-  },
-  Miguel: {
-    rating: 4.0,
-    foto: "img/homen4.jpg",
-    position: "Atacante",
-    teams: ["Baile de Monique"],
-    score: 77,
-    totalAvaliacoes: 2,
-    comentarios: ["Velocidade incrível.", "Ainda pode melhorar o chute."],
-    mapaCalor: "img/mapacalor/atacante.png",
-    atributos: "img/atributos/atacante.png"
-  },
-  Fernanda: {
-    rating: 4.3,
-    foto: "img/mulher2.jpg",
-    position: "Meio-campista",
-    teams: ["Barcemlona"],
-    score: 78,
-    totalAvaliacoes: 3,
-    comentarios: ["Excelente controle de bola.", "Ótima visão de jogo."],
-    mapaCalor: "img/mapacalor/meiocampo.png",
-    atributos: "img/atributos/midfild.png"
-  },
-  Gabi: {
-    rating: 4.1,
-    foto: "img/mulher1.jpg",
-    position: "Zagueira",
-    teams: ["Marrentos FC"],
-    score: 75,
-    totalAvaliacoes: 2,
-    comentarios: ["Forte na marcação.", "Bom posicionamento."],
-    mapaCalor: "img/mapacalor/defesa.png",
-    atributos: "img/atributos/defensor.png"
-  },
-  Carla: {
-    rating: 4.6,
-    foto: "img/carla.jpg",
-    position: "Zagueira",
-    teams: ["Cartola Fc"],
-    score: 76,
-    totalAvaliacoes: 1,
-    comentarios: [],
-     mapaCalor: "img/mapacalor/defesa.png",
-    atributos: "img/atributos/defensor.png"
-  }
-};
+        atributos: "img/atributos/midfild.png"
+      },
+      Davi: {
+        rating: 4.5,
+        foto: "img/homen3.jpg",
+        position: "Zagueiro",
+        teams: ["Paysanduba"],
+        score: 79,
+        totalAvaliacoes: 4,
+        comentarios: [
+          { nota: 4.5, texto: "Excelente tempo de bola e força física." },
+          { nota: 4.5, texto: "Ganha a maioria das disputas aéreas, mas pode melhorar a saída curta." },
+          { nota: 4.5, texto: "Mantém a calma mesmo sob pressão do adversário." }
+        ],
+        mapaCalor: "img/mapacalor/defesa.png",
+        atributos: "img/atributos/defensor.png"
+      },
+      Diego: {
+        rating: 4.7,
+        foto: "img/goleiro.jpg",
+        position: "Goleiro",
+        teams: ["Inter de Limão"],
+        score: 85,
+        totalAvaliacoes: 5,
+        comentarios: [
+          { nota: 4.7, texto: "Reflexo rápido e ótimo posicionamento em bolas cruzadas." },
+          { nota: 4.7, texto: "Saída pelo chão ainda pode evoluir." },
+          { nota: 4.7, texto: "Comanda bem a defesa, passa segurança ao time." }
+        ],
+        mapaCalor: "img/mapacalor/goleiro.png",
+        atributos: "img/atributos/goleiro.png"
+      },
+      Miguel: {
+        rating: 4.0,
+        foto: "img/homen4.jpg",
+        position: "Atacante",
+        teams: ["Baile de Monique"],
+        score: 77,
+        totalAvaliacoes: 2,
+        comentarios: [
+          { nota: 4.0, texto: "Potência física acima da média, segura bem os zagueiros." },
+          { nota: 4.0, texto: "Precisa melhorar tomada de decisão no último terço." },
+          { nota: 4.0, texto: "Tem boa presença de área, sabe atacar o espaço." }
+        ],
+        mapaCalor: "img/mapacalor/atacante.png",
+        atributos: "img/atributos/atacante.png"
+      },
+      Fernanda: {
+        rating: 4.3,
+        foto: "img/mulher2.jpg",
+        position: "Meio-campista",
+        teams: ["Barcemlona"],
+        score: 78,
+        totalAvaliacoes: 3,
+        comentarios: [
+          { nota: 4.3, texto: "Controle de bola refinado e passes inteligentes." },
+          { nota: 4.3, texto: "Excelente na distribuição de jogo, mas pode aumentar intensidade defensiva." },
+          { nota: 4.3, texto: "Boa liderança dentro de campo." }
+        ],
+        mapaCalor: "img/mapacalor/meiocampo.png",
+        atributos: "img/atributos/midfild.png"
+      },
+      Gabi: {
+        rating: 4.1,
+        foto: "img/mulher1.jpg",
+        position: "Zagueira",
+        teams: ["Marrentos FC"],
+        score: 75,
+        totalAvaliacoes: 2,
+        comentarios: [
+          { nota: 4.1, texto: "Muito firme na marcação individual." },
+          { nota: 4.1, texto: "Boa leitura para antecipar jogadas." },
+          { nota: 4.1, texto: "Poderia arriscar mais lançamentos longos para iniciar contra-ataques." }
+        ],
+        mapaCalor: "img/mapacalor/defesa.png",
+        atributos: "img/atributos/defensor.png"
+      },
+      Carla: {
+        rating: 4.6,
+        foto: "img/carla.jpg",
+        position: "Zagueira",
+        teams: ["Cartola Fc"],
+        score: 76,
+        totalAvaliacoes: 1,
+        comentarios: [
+          { nota: 4.6, texto: "Posicionamento excelente e calma sob pressão." },
+          { nota: 4.6, texto: "Muito eficiente em coberturas defensivas." },
+          { nota: 4.6, texto: "Boa comunicação com o setor defensivo." }
+        ],
+        mapaCalor: "img/mapacalor/defesa.png",
+        atributos: "img/atributos/defensor.png"
+      }
+
+    };
+
 
     const params = new URLSearchParams(window.location.search);
     const nome = params.get("nome");
@@ -360,13 +393,20 @@
         listaComentarios.innerHTML = "<p>Nenhum comentário ainda.</p>";
         return;
       }
-      listaComentarios.innerHTML = comentarios.map(c => `
-        <div class="comentario">
-          <strong>Avaliação: ${c.nota.toFixed(1)} / 5</strong>
-          <p>${c.texto}</p>
-        </div>
-      `).join("");
+
+      listaComentarios.innerHTML = comentarios.map(c => {
+        if (typeof c === "string") {
+          return `<div class="comentario"><p>${c}</p></div>`;
+        }
+        return `
+      <div class="comentario">
+        <strong>Avaliação: ${c.nota.toFixed(1)} / 5</strong>
+        <p>${c.texto}</p>
+      </div>
+    `;
+      }).join("");
     }
+
 
     if (jogadores[nome]) {
       const jogador = jogadores[nome];
@@ -400,4 +440,5 @@
     }
   </script>
 </body>
+
 </html>

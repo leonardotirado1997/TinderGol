@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -16,19 +17,21 @@
       height: 100vh;
       background: linear-gradient(135deg, #f0f3f7, #d9e2ec);
       color: #333;
+      overflow: hidden;
     }
 
     /* Contatos */
     .contatos {
-      width: 320px;
+      width: 300px;
       background: #fff;
       border-right: 1px solid #ddd;
       overflow-y: auto;
-      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
-      padding-top: 10px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
     }
 
-    /* Cada contato */
     .contato {
       padding: 12px 20px;
       cursor: pointer;
@@ -36,11 +39,10 @@
       display: flex;
       align-items: center;
       gap: 15px;
-      transition: background-color 0.25s ease;
       font-weight: 500;
       font-size: 1rem;
       color: #2c3e50;
-      user-select: none;
+      transition: background-color 0.25s ease;
     }
 
     .contato:hover {
@@ -48,207 +50,180 @@
       color: #1a237e;
     }
 
-    .contato img.profile-icon {
+    .contato img {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 0 5px rgba(26, 35, 126, 0.3);
-      flex-shrink: 0;
     }
 
-    /* Chat geral */
+    /* Chat */
     .chat {
       flex: 1;
       display: flex;
       flex-direction: column;
       background: #fefefe;
-      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.03);
     }
 
-    /* Cabeçalho do chat */
     .chat-header {
       background: #fff;
-      padding: 18px 25px;
+      padding: 15px 20px;
       border-bottom: 1px solid #ccc;
       font-weight: 700;
       font-size: 1.2rem;
-      color: #34495e;
       display: flex;
       align-items: center;
-      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+      gap: 10px;
     }
 
-    .chat-header a {
-      text-decoration: none;
-      color: #34495e;
-      transition: color 0.3s ease;
-    }
-
-    .chat-header a:hover {
+    #btnVoltar {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
       color: #2980b9;
+      cursor: pointer;
     }
 
-    /* Área das mensagens */
     .mensagens {
       flex: 1;
-      padding: 25px 30px;
+      padding: 15px;
       overflow-y: auto;
-      background: #f5f7fa;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      scrollbar-width: thin;
-      scrollbar-color: #a0aec0 transparent;
+      gap: 10px;
+      background: #f5f7fa;
     }
 
-    /* Estilo das mensagens */
     .mensagem {
       max-width: 65%;
-      padding: 14px 18px;
+      padding: 12px 16px;
       border-radius: 18px;
       background: #fff;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
       font-size: 0.95rem;
-      line-height: 1.4;
-      color: #2d3436;
-      word-wrap: break-word;
-      user-select: text;
     }
 
     .mensagem.eu {
       align-self: flex-end;
       background: #d1ffd6;
-      box-shadow: 0 2px 8px rgba(72, 187, 120, 0.4);
     }
 
-    /* Área do input e botão */
     .input-area {
       display: flex;
-      padding: 15px 25px;
+      padding: 10px;
       border-top: 1px solid #ddd;
       background: #fff;
     }
 
     .input-area input {
       flex: 1;
-      padding: 14px 20px;
-      border: 1.8px solid #ccc;
+      padding: 10px;
+      border: 1.5px solid #ccc;
       border-radius: 25px;
       font-size: 1rem;
-      transition: border-color 0.3s ease;
       outline: none;
-      color: #2c3e50;
-    }
-
-    .input-area input:focus {
-      border-color: #2980b9;
-      box-shadow: 0 0 6px rgba(41, 128, 185, 0.4);
     }
 
     .input-area button {
-      margin-left: 15px;
-      padding: 14px 28px;
+      margin-left: 10px;
+      padding: 10px 18px;
       background-color: #2980b9;
       border: none;
       color: #fff;
-      font-weight: 600;
-      font-size: 1rem;
       border-radius: 25px;
       cursor: pointer;
-      transition: background-color 0.25s ease;
-      box-shadow: 0 3px 7px rgba(41, 128, 185, 0.6);
     }
 
-    .input-area button:hover {
-      background-color: #1c5d99;
+    /* Menu inferior no mobile */
+    nav.nova {
+      display: flex;
+      justify-content: space-around;
+      background: #000;
+      padding: 10px 0;
+      border-radius: 40px;
+      /* margin: 10px; */
     }
 
-    /* Scrollbar customizada para webkit */
-    .mensagens::-webkit-scrollbar {
-      width: 8px;
+    nav.nova a {
+      color: white;
+      font-size: 1.4rem;
+      text-decoration: none;
     }
 
-    .mensagens::-webkit-scrollbar-track {
-      background: transparent;
-    }
+    /* Mobile */
+    @media (max-width: 720px) {
+      body {
+        flex-direction: column;
+      }
 
-    .mensagens::-webkit-scrollbar-thumb {
-      background-color: #a0aec0;
-      border-radius: 4px;
-    }
+      .contatos {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        max-width: 320px;
+        transform: translateX(0);
+        z-index: 10;
+      }
 
-    .navbar a i {
-      color: #fff !important;
-      text-shadow:
-        -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000,
-        2px 2px 0 #000,
-        0 0 5px rgba(255, 255, 255, 0.8);
-      transition: color 0.3s ease, transform 0.2s ease;
+      .contatos.escondido {
+        transform: translateX(-100%);
+      }
+
+      .chat.escondido {
+        display: none;
+      }
+
+      #btnVoltar {
+        display: inline-block;
+      }
+
+      nav.nova {
+        position: fixed;
+        bottom: 0;
+        width: calc(100% - 20px);
+        margin: 0 10px 10px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="contatos">
-    <br>
-    <br>
+  <div class="contatos" id="contatos">
     <div class="contato" onclick="abrirConversa('Josue')">
-      <img src="img/Homen1.jpg" alt="Alice" class="profile-icon" /> Josue
-
+      <img src="img/Homen1.jpg" alt="Josue" /> Josue
     </div>
-    <br>
-    <br>
     <div class="contato" onclick="abrirConversa('Bruno')">
-      <img src="img/Homen2.jpg" class="profile-icon">Bruno
+      <img src="img/Homen2.jpg" alt="Bruno" /> Bruno
     </div>
-    <br>
-    <br>
     <div class="contato" onclick="abrirConversa('Davi')">
-      <img src="img/homen3.jpg" class="profile-icon">Davi
+      <img src="img/homen3.jpg" alt="Davi" /> Davi
     </div>
-    <br>
-    <br>
     <div class="contato" onclick="abrirConversa('Diego')">
-      <img src="img/goleiro.jpg" class="profile-icon">Diego
+      <img src="img/goleiro.jpg" alt="Diego" /> Diego
     </div>
-    <br>
-    <br>
     <div class="contato" onclick="abrirConversa('Miguel')">
-      <img src="img/homen4.jpg" class="profile-icon">Miguel
+      <img src="img/homen4.jpg" alt="Miguel" /> Miguel
     </div>
-    <br>
-    <br>
     <div class="contato" onclick="abrirConversa('Fernanda')">
-      <img src="img/mulher2.jpg" class="profile-icon">Fernanda
+      <img src="img/mulher2.jpg" alt="Fernanda" /> Fernanda
     </div>
-    <br>
-    <br>
     <div class="contato" onclick="abrirConversa('Gabi')">
-      <img src="img/mulher1.jpg" class="profile-icon">Gabi
+      <img src="img/mulher1.jpg" alt="Gabi" /> Gabi
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
-
-    <!-- ... restantes ... -->
     <nav class="nova">
-      <a href="../index.html"><i class="fas fa-fire"></i></a>
+      <a href="Inicial-Video.html"><i class="fas fa-fire"></i></a>
       <a href="mensagens.html"><i class="fas fa-comments"></i></a>
       <a href="usuario.html"><i class="fas fa-user"></i></a>
     </nav>
   </div>
 
-  <div class="chat">
+  <div class="chat escondido" id="chat">
     <div class="chat-header" id="chatHeader">
+      <button id="btnVoltar"><i class="fas fa-arrow-left"></i></button>
       Selecione um contato
     </div>
 
@@ -261,29 +236,58 @@
   </div>
 
   <script>
-    function abrirConversa(nome) {
-      // Atualiza o cabeçalho com link para o perfil
-      document.getElementById('chatHeader').innerHTML =
-        `<a href="perfil.html?nome=${encodeURIComponent(nome)}">${nome}</a>`;
+    const contatosDiv = document.getElementById('contatos');
+    const chatDiv = document.getElementById('chat');
+    const chatHeader = document.getElementById('chatHeader');
+    const mensagensDiv = document.getElementById('mensagens');
+    let contatoAtual = null;
 
-      // Mensagem inicial no chat
-      document.getElementById('mensagens').innerHTML =
-        `<div class="mensagem">Conversa com <strong>${nome}</strong> iniciada.</div>`;
+    function abrirConversa(nome) {
+      contatoAtual = nome;
+      chatHeader.innerHTML = `
+        <button id="btnVoltar"><i class="fas fa-arrow-left"></i></button>
+        <a href="perfil.html?nome=${encodeURIComponent(nome)}">${nome}</a>
+      `;
+      document.getElementById('btnVoltar').addEventListener('click', voltarParaContatos);
+      mensagensDiv.innerHTML = `<div class="mensagem">Conversa com <strong>${nome}</strong> iniciada.</div>`;
+      ajustarLayout();
     }
 
     function enviarMensagem() {
       const input = document.getElementById('inputMensagem');
       const texto = input.value.trim();
-      if (texto) {
-        const mensagens = document.getElementById('mensagens');
-        const msg = document.createElement('div');
-        msg.className = 'mensagem eu';
-        msg.innerText = texto;
-        mensagens.appendChild(msg);
-        input.value = '';
-        mensagens.scrollTop = mensagens.scrollHeight;
+      if (!texto) return;
+      const msg = document.createElement('div');
+      msg.className = 'mensagem eu';
+      msg.innerText = texto;
+      mensagensDiv.appendChild(msg);
+      input.value = '';
+      mensagensDiv.scrollTop = mensagensDiv.scrollHeight;
+    }
+
+    function voltarParaContatos() {
+      contatoAtual = null;
+      ajustarLayout();
+      chatHeader.innerHTML = 'Selecione um contato';
+    }
+
+    function ajustarLayout() {
+      if (window.innerWidth > 720) {
+        contatosDiv.classList.remove('escondido');
+        chatDiv.classList.remove('escondido');
+      } else {
+        if (contatoAtual) {
+          contatosDiv.classList.add('escondido');
+          chatDiv.classList.remove('escondido');
+        } else {
+          contatosDiv.classList.remove('escondido');
+          chatDiv.classList.add('escondido');
+        }
       }
     }
+
+    window.addEventListener('resize', ajustarLayout);
+    window.addEventListener('load', ajustarLayout);
   </script>
 </body>
 
