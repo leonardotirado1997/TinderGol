@@ -4,24 +4,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <title>Mensagens Olheiros</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon_io/favicon-32x32.png" />
   <script src="https://kit.fontawesome.com/f9e19193d6.js" crossorigin="anonymous"></script>
-  <title>Mensagens</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Roboto', sans-serif;
       margin: 0;
-      display: flex;
+      font-family: 'Roboto', sans-serif;
       height: 100vh;
+      display: flex;
       background: linear-gradient(135deg, #f0f3f7, #d9e2ec);
       color: #333;
       overflow: hidden;
     }
 
+    /* CONTATOS */
     .contatos {
       width: 25%;
       min-width: 250px;
@@ -31,11 +35,11 @@
       box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
       padding: 10px;
       flex-shrink: 0;
-      transition: transform 0.3s ease;
-      z-index: 10;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      transition: transform 0.3s ease;
+      z-index: 10;
     }
 
     .contato {
@@ -66,6 +70,7 @@
       flex-shrink: 0;
     }
 
+    /* CHAT */
     .chat {
       flex: 1;
       display: flex;
@@ -73,6 +78,9 @@
       background: #fefefe;
       box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.03);
       overflow: hidden;
+      height: 100vh;
+      max-height: 100vh;
+      position: relative;
     }
 
     .chat-header {
@@ -84,11 +92,12 @@
       color: #34495e;
       display: flex;
       align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
     }
 
     #btnVoltar {
       display: none;
-      margin-right: 10px;
       font-size: 1.3rem;
       color: #2980b9;
       background: none;
@@ -104,6 +113,8 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      /* importante para garantir scroll e não cobrir input */
+      margin-bottom: 60px;
     }
 
     .mensagem {
@@ -124,30 +135,48 @@
     }
 
     .input-area {
-      display: flex;
-      padding: 10px;
-      border-top: 1px solid #ddd;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
       background: #fff;
+      border-top: 1px solid #ddd;
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+      box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.05);
+      z-index: 20;
     }
 
     .input-area input {
       flex: 1;
-      padding: 10px;
+      padding: 10px 15px;
       border: 1.5px solid #ccc;
       border-radius: 20px;
       font-size: 1rem;
+      outline-offset: 2px;
+    }
+
+    .input-area input:focus {
+      border-color: #2980b9;
     }
 
     .input-area button {
-      margin-left: 10px;
       padding: 10px 20px;
       background-color: #2980b9;
       border: none;
       color: #fff;
       border-radius: 20px;
       cursor: pointer;
+      transition: background-color 0.2s ease;
+      flex-shrink: 0;
     }
 
+    .input-area button:hover {
+      background-color: #1a237e;
+    }
+
+    /* RESPONSIVO */
     @media (max-width: 768px) {
       body {
         flex-direction: column;
@@ -155,71 +184,131 @@
 
       .contatos {
         position: fixed;
-        left: 0;
         top: 0;
+        left: 0;
         width: 100%;
-        height: 100%;
+        height: 100vh;
         max-width: 100%;
-        transform: translateX(0);
+        background: #fff;
         z-index: 100;
+        overflow-y: auto;
+        transform: translateX(0);
+        transition: transform 0.3s ease;
       }
 
       .contatos.escondido {
         transform: translateX(-100%);
       }
 
-      #btnVoltar {
-        display: inline-block;
-      }
-
       .chat {
-        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: #fefefe;
+        z-index: 101;
       }
 
       .chat.escondido {
         display: none;
       }
+
+      #btnVoltar {
+        display: inline-block;
+      }
+
+      /* Ajuste para mensagens com espaço para input fixo */
+      .mensagens {
+        margin-bottom: 70px;
+        /* deixa espaço para input fixo */
+      }
+
+      .input-area {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-top: 1px solid #ddd;
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+        box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.05);
+        z-index: 20;
+
+        /* Centraliza e limita largura no desktop */
+        justify-content: center;
+      }
+
+      .input-area input {
+        flex: 1;
+        max-width: 700px;
+        /* limite máximo para desktop */
+        padding: 10px 15px;
+        border: 1.5px solid #ccc;
+        border-radius: 20px;
+        font-size: 1rem;
+        outline-offset: 2px;
+      }
+
+      .input-area button {
+        padding: 10px 20px;
+        background-color: #2980b9;
+        border: none;
+        color: #fff;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        flex-shrink: 0;
+      }
+
+      /* No mobile, input usa toda largura possível */
+      @media (max-width: 768px) {
+        .input-area {
+          justify-content: flex-start;
+          padding: 10px 15px;
+        }
+
+        .input-area input {
+          max-width: none;
+        }
+      }
+
     }
   </style>
-
 </head>
 
 <body>
 
   <div class="contatos" id="contatos">
-    <a href="pagina.html" class="back-arrow" title="Voltar">&#8592;</a>
-    <br /><br /><br />
     <div class="contato" onclick="abrirConversa('Mariana')">
       <img src="img/mulher1.jpg" alt="Mariana" class="profile-icon" />
       Mariana
     </div>
-    <br /><br />
     <div class="contato" onclick="abrirConversa('Lucas')">
       <img src="img/veio.jpg" alt="Lucas" class="profile-icon" />
       Lucas
     </div>
-    <br /><br />
     <div class="contato" onclick="abrirConversa('Camila')">
       <img src="img/mulher.jpg" alt="Camila" class="profile-icon" />
       Camila
     </div>
-    <br /><br />
     <div class="contato" onclick="abrirConversa('Rafael')">
       <img src="img/homen4.jpg" alt="Rafael" class="profile-icon" />
       Rafael
     </div>
-    <br /><br />
     <div class="contato" onclick="abrirConversa('Gabriel')">
       <img src="img/homen3.jpg" alt="Gabriel" class="profile-icon" />
       Gabriel
     </div>
-    <br /><br />
     <div class="contato" onclick="abrirConversa('Pedro')">
       <img src="img/homen2.jpg" alt="Pedro" class="profile-icon" />
       Pedro
     </div>
-    <br /><br />
     <div class="contato" onclick="abrirConversa('Thiago')">
       <img src="img/homen1.jpg" alt="Thiago" class="profile-icon" />
       Thiago
@@ -235,8 +324,8 @@
     <div class="mensagens" id="mensagens"></div>
 
     <div class="input-area">
-      <input type="text" id="inputMensagem" placeholder="Digite sua mensagem..." />
-      <button onclick="enviarMensagem()">Enviar</button>
+      <input type="text" id="inputMensagem" placeholder="Digite sua mensagem..." autocomplete="off" />
+      <button id="btnEnviar">Enviar</button>
     </div>
   </div>
 
@@ -246,6 +335,8 @@
     const chatHeader = document.getElementById('chatHeader');
     const mensagensDiv = document.getElementById('mensagens');
     const btnVoltar = document.getElementById('btnVoltar');
+    const inputMensagem = document.getElementById('inputMensagem');
+    const btnEnviar = document.getElementById('btnEnviar');
 
     let contatoAtual = null;
 
@@ -253,28 +344,32 @@
       contatoAtual = nome;
       chatHeader.innerHTML = `
         <button id="btnVoltar" title="Voltar para contatos"><i class="fas fa-arrow-left"></i></button>
-        <a href="olheiro.html?nome=${encodeURIComponent(nome)}">${nome}</a>
+        <a href="olheiro.html?nome=${encodeURIComponent(nome)}" style="color:#2980b9; text-decoration:none;">${nome}</a>
       `;
 
-
+      // Reatribuir o event listener para o botão voltar
       document.getElementById('btnVoltar').addEventListener('click', voltarParaContatos);
 
       mensagensDiv.innerHTML = `<div class="mensagem">Conversa com <strong>${nome}</strong> iniciada.</div>`;
+      inputMensagem.value = '';
+      inputMensagem.focus();
 
       ajustarLayout();
+      scrollMensagensParaBaixo();
     }
 
     function enviarMensagem() {
-      const input = document.getElementById('inputMensagem');
-      const texto = input.value.trim();
+      const texto = inputMensagem.value.trim();
       if (!texto) return;
 
       const msg = document.createElement('div');
       msg.className = 'mensagem eu';
       msg.innerText = texto;
       mensagensDiv.appendChild(msg);
-      input.value = '';
-      mensagensDiv.scrollTop = mensagensDiv.scrollHeight;
+      inputMensagem.value = '';
+      inputMensagem.focus();
+
+      scrollMensagensParaBaixo();
     }
 
     function voltarParaContatos() {
@@ -287,33 +382,46 @@
     function ajustarLayout() {
       const largura = window.innerWidth;
       if (largura > 768) {
-
+        // Desktop/tablet
         contatosDiv.classList.remove('escondido');
         chatDiv.classList.remove('escondido');
-
 
         if (!contatoAtual) {
           chatHeader.innerHTML = 'Selecione um contato';
           mensagensDiv.innerHTML = '';
         }
       } else {
-
+        // Mobile
         if (contatoAtual) {
-
           contatosDiv.classList.add('escondido');
           chatDiv.classList.remove('escondido');
         } else {
-
           contatosDiv.classList.remove('escondido');
           chatDiv.classList.add('escondido');
         }
       }
     }
 
-    // Ajusta layout ao redimensionar e ao carregar
+    function scrollMensagensParaBaixo() {
+      mensagensDiv.scrollTop = mensagensDiv.scrollHeight;
+    }
+
+    // Eventos
+    btnEnviar.addEventListener('click', enviarMensagem);
+
+    inputMensagem.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        enviarMensagem();
+      }
+    });
+
+    btnVoltar.addEventListener('click', voltarParaContatos);
+
     window.addEventListener('resize', ajustarLayout);
     window.addEventListener('load', ajustarLayout);
   </script>
+
 </body>
 
 </html>

@@ -163,6 +163,36 @@
     .comentario:last-child {
       border-bottom: none;
     }
+
+    /* Responsividade para telas pequenas */
+    @media (max-width: 600px) {
+      .profile-main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .profile-main img {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .profile-details {
+        padding: 15px;
+        width: 100%;
+      }
+
+      .rating {
+        flex-wrap: wrap;
+        /* deixa as estrelas quebrarem de linha se faltar espaço */
+        justify-content: center;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+        /* empilha as infos */
+      }
+    }
   </style>
 </head>
 

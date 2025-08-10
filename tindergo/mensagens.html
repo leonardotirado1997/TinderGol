@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon_io/favicon-32x32.png">
   <script src="https://kit.fontawesome.com/f9e19193d6.js" crossorigin="anonymous"></script>
@@ -20,7 +19,7 @@
       overflow: hidden;
     }
 
-    /* Contatos */
+    /* Lista de contatos */
     .contatos {
       width: 300px;
       background: #fff;
@@ -58,7 +57,7 @@
       box-shadow: 0 0 5px rgba(26, 35, 126, 0.3);
     }
 
-    /* Chat */
+    /* Área do chat */
     .chat {
       flex: 1;
       display: flex;
@@ -84,6 +83,11 @@
       font-size: 1.3rem;
       color: #2980b9;
       cursor: pointer;
+    }
+
+    .chat-header a {
+      color: #2980b9;
+      text-decoration: none;
     }
 
     .mensagens {
@@ -136,14 +140,13 @@
       cursor: pointer;
     }
 
-    /* Menu inferior no mobile */
+    /* Menu inferior mobile */
     nav.nova {
       display: flex;
       justify-content: space-around;
       background: #000;
       padding: 10px 0;
       border-radius: 40px;
-      /* margin: 10px; */
     }
 
     nav.nova a {
@@ -213,7 +216,6 @@
     <div class="contato" onclick="abrirConversa('Gabi')">
       <img src="img/mulher1.jpg" alt="Gabi" /> Gabi
     </div>
-
     <nav class="nova">
       <a href="Inicial-Video.html"><i class="fas fa-fire"></i></a>
       <a href="mensagens.html"><i class="fas fa-comments"></i></a>
@@ -226,9 +228,7 @@
       <button id="btnVoltar"><i class="fas fa-arrow-left"></i></button>
       Selecione um contato
     </div>
-
     <div class="mensagens" id="mensagens"></div>
-
     <div class="input-area">
       <input type="text" id="inputMensagem" placeholder="Digite sua mensagem..." />
       <button onclick="enviarMensagem()">Enviar</button>
